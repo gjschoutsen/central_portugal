@@ -1,4 +1,10 @@
 "use client"
+
+type geoDataTypes = {
+  name:string
+  coordinates:[number, number]
+}[]
+
 import React from 'react'
 import mapboxgl from 'mapbox-gl'
 
@@ -22,8 +28,9 @@ const locations = {
   ],
 };
 
-export default function Map() {
+export default function Map(geoData:geoDataTypes) {
   const mapContainerRef = React.useRef(null);
+  console.log("inside map.tsx, geodata = ", geoData);
 
   React.useEffect(() => {
     let map: mapboxgl.Map;
@@ -35,15 +42,15 @@ export default function Map() {
         zoom: 7.5
       });
 
-    // // Create default markers
-    // locations.features.map((feature) =>
-    // new mapboxgl.Marker().setLngLat(feature.geometry.coordinates).addTo(map)
-    // );
-    }
+    // Create default markers
+  //   geoData.map((feature) =>
+  //   new mapboxgl.Marker().setLngLat(feature.coordinates).addTo(map)
+  //   );
+  }
 
     // Clean up on unmount
     return () => map && map.remove();
-  }, []);
+  }, [geoData]);
 
   return (
     <>

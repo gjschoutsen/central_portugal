@@ -1,4 +1,4 @@
-export interface mokBusinessDirectoryTypes {
+export type mokBusinessDirectoryTypes = {
     id:number;
     nameOfBusiness:string;
     nameOfOwner:string;
@@ -14,10 +14,7 @@ export interface mokBusinessDirectoryTypes {
         City:string;
         Municipality:string;
     },
-    coordinats: {
-        lat: string; 
-        long: string;
-    },
+    coordinats: number[]
     description:string;
     review:{
         stars:number;
@@ -26,10 +23,10 @@ export interface mokBusinessDirectoryTypes {
     },
     speakingEnglish: boolean;
     img:string;
-}
+}[]
 
 
-export const mokBusinessDirectory = [
+export const mokBusinessDirectory:mokBusinessDirectoryTypes = [
     {
     id:1,
     nameOfBusiness:"De Super Kapper",
@@ -46,10 +43,7 @@ export const mokBusinessDirectory = [
         City:"Coimbra",
         Municipality:"Coimbra",
     },
-    coordinats: {
-        lat: "40.20122", 
-        long: "-8.40829",
-    },
+    coordinats: [-8.40829,40.20122],
     description:"Hairsalon with great koffie",
     review:{
         stars:5,
@@ -75,10 +69,7 @@ export const mokBusinessDirectory = [
         City:"Graca",
         Municipality:"Pedrogao Grande",
     },
-    coordinats: {
-        lat: "39.89391", 
-        long: "-8.21689",
-    },
+    coordinats:[-8.21689,39.89391],
     description:"Lumber yard selling local wood species.",
     review:{
         stars:5,
@@ -104,10 +95,7 @@ export const mokBusinessDirectory = [
         City:"Serta",
         Municipality:"Serta",
     },
-    coordinats:{
-        lat: "39.80197", 
-        long: "-8.09879",
-    },
+    coordinats:[-8.09879,39.80197],
     description:"A shop that sells vintage clothing.",
     review:{
         stars:5,
@@ -133,10 +121,7 @@ export const mokBusinessDirectory = [
         City:"Figueiro dos Vinhos",
         Municipality:"Figueiro dos Vinhos",
     },
-    coordinats: {
-        lat: "39.90315", 
-        long: "-8.27514",
-    },
+    coordinats: [-8.27514,39.90315],
     description:"You can buy your construction materials here. Possibility to deliver at home",
     review:{
         stars:5,
@@ -154,6 +139,7 @@ export const mokBusinessDirectory = [
     nameOfOwner:"Angela",
     phoneNumber:"873435654",
     openingHours:"09:00 - 13:00 / 15:00 - 19:00",
+    open:true,
     adress: {
         street:"rua do estremadouro",
         number:"78",
@@ -161,10 +147,7 @@ export const mokBusinessDirectory = [
         City:"Penela",
         Municipality:"Penela",
     },
-    coordinats: {
-        lat: "40.03160", 
-        long: "-8.38996",
-    },
+    coordinats: [-8.38996,40.03160],
     description:"Clothing repair shop",
     review:{
         stars:5,
@@ -186,10 +169,7 @@ export const mokSightSeeingDirectory = [
         activity:"hiking",
         difficulty:"very",
         imgs:["../img/hike-mountain.jpg","../img/mountain.jpg","../img/waterfall.jpg"],
-        coordinats: {
-            lat: "40.20122", 
-            long: "-8.40829",
-    },
+        coordinats: [-8.40829,40.20122]
     },
     {
         id:2,
@@ -198,10 +178,7 @@ export const mokSightSeeingDirectory = [
         activity:"",
         difficulty:"",
         imgs:[],
-        coordinats: {
-            lat: "40.20122", 
-            long: "-8.40829",
-    },
+    coordinats: [-8.40856,40.20134],
     },
     {
         id:3,
@@ -210,10 +187,7 @@ export const mokSightSeeingDirectory = [
         activity:"",
         difficulty:"",
         images:[],
-        coordinats: {
-            lat: "40.20122", 
-            long: "-8.40829",
-    },
+        coordinats: [-8.40756,40.20534],
     },
     {
         id:4,
@@ -222,10 +196,7 @@ export const mokSightSeeingDirectory = [
         activity:"",
         difficulty:"",
         imgs:[],
-        coordinats: {
-            lat: "40.20122", 
-            long: "-8.40829",
-    },
+        coordinats: [-8.40256,40.20434],
     },
 ]
 export const mokGovernmentLocations = [
@@ -240,10 +211,7 @@ export const mokGovernmentLocations = [
             City:"Penela",
             Municipality:"Penela",
             },
-        coordinats: {
-            lat: "40.20122", 
-            long: "-8.40829",
-    },
+        coordinats: [-8.40726,40.20524],
         speakingEnglish: true,
         img:"../img/town-hall.jpg"
 
