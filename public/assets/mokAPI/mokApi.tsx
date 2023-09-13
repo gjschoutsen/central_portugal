@@ -14,7 +14,7 @@ export type mokBusinessDirectoryTypes = {
         City:string;
         Municipality:string;
     },
-    coordinats: number[]
+    coordinats: [number, number]
     description:string;
     review:{
         stars:number;

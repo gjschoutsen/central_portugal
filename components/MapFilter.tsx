@@ -1,58 +1,33 @@
 
 "use client"
+import { IFilterState } from '@/types/filters.types';
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-import { useEffect, useState } from "react";
+interface MapFilterProps {
+  filterState: IFilterState;
+  onFiltersChanged: Dispatch<SetStateAction<IFilterState>>
+}
 
-export const MapFilter = ({sendInfoToMap}) => {
-  const[checkedBusiness, setcheckedBusiness] = useState(true)
-  const[checkedSights, setcheckedSights] = useState(true)
-  const[checkedGovernment, setcheckedGovernment] = useState(true)
+export const MapFilter = (props: MapFilterProps) => {
+  const { filterState, onFiltersChanged } = props;
 
-  const handleBusinessCheckbox= (e)=>{
-    if(checkedBusiness){
-    setcheckedBusiness(false)
-    } else {
-      setcheckedBusiness(true)
-    }
+  const toggleFilter = (category: keyof IFilterState) => {
+    onFiltersChanged({
+      ...filterState,
+      [category]: !filterState[category],
+    })
   }
-
-  const handleSightsCheckbox= (e)=>{
-    if(checkedSights){
-   setcheckedSights(false)
-    } else {
-      setcheckedSights(true)
-    }
-  }
-
-  const handleGovernmentCheckbox= (e)=>{
-    if(checkedGovernment){
-   setcheckedGovernment(false)
-    } else {
-      setcheckedGovernment(true)
-    }
-  }
-  
-  useEffect(()=>{
-  
-    const quary = {
-      business: checkedBusiness,
-      sights: checkedSights,
-      government: checkedGovernment,
-    }
-
-    sendInfoToMap(quary)
-  })
 
   return (
     <form>
       <label>
-      <input type="checkbox" value="business" checked={checkedBusiness} onChange={handleBusinessCheckbox}/>
+      <input type="checkbox" value="business" checked={filterState.business} onChange={() => {toggleFilter('business')}}/>
         Business</label>
       <label>
-      <input type="checkbox" value="sights" checked={checkedSights} onChange={handleSightsCheckbox}/>
+      <input type="checkbox" value="sights" checked={filterState.sights} onChange={() =>{toggleFilter('sights')}}/>
         Sight Seeing</label>
       <label>
-      <input type="checkbox" value="government" checked={checkedGovernment} onChange={handleGovernmentCheckbox}/>
+      <input type="checkbox" value="government" checked={filterState.government} onChange={()=>{toggleFilter("government")}}/>
         Government</label>
     </form>
   )

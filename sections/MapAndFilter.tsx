@@ -1,6 +1,8 @@
 "use client"
 
 import { MapFilter } from "@/components/MapFilter";
+import { IFilterState } from "@/types/filters.types";
+import { IMapMarker } from "@/types/map.types";
 import Map from "../components/Map"
 import {
   mokBusinessDirectory, 
@@ -8,42 +10,67 @@ import {
   mokSightSeeingDirectory, 
   mokBusinessDirectoryTypes
   } from "../public/assets/mokAPI/mokApi"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const MapAndFilter = () => {
-  const [quaryFromFilter, setQuaryFromFilter] = useState({business:true, sights:true, government:true})
-  const [geoData, setGeoData] = useState([])
+  const [filterState, setFilterState] = useState<IFilterState>({
+    business:true, 
+    sights:true, 
+    government:true,
+  });
+  
+  const [mapMarkers, setMapMarkers] = useState<IMapMarker[]>([])
 
-  const getQuaryFromFilter = (quary:object)=>{
-    createGeoData(quary)
-  }
+  useEffect(()=>{
+    let result: IMapMarker[] = [];
 
-const createGeoData = (quary)=>{
-    const result = {
-      name:"",
-      long:"",
-      lat:""
+    if (filterState.business) {
+      result = [
+        ...result, 
+        ...mokBusinessDirectory.map((business) => {
+          return {
+            name: business.nameOfBusiness,
+            coordinates:business.coordinats,
+          }
+        }),
+      ];
     }
-    mokBusinessDirectory.map((singleBusiness)=>{
-      return(
 
-        result.name = singleBusiness.nameOfBusiness,
-        result.long = singleBusiness.coordinats.long,
-        result.lat = singleBusiness.coordinats.lat        
-      )
-    })
-    setGeoData()
-  }
+    if(filterState.sights) {
+      result = [
+        ...result,
+        ...mokSightSeeingDirectory.map((sight) => {
+          return {
+            name: sight.name,
+            coordinates: sight.coordinats,
+          }
+        })
+      ]
+    }
 
-  console.log("geodata "+ geoData);
-
+    if (filterState.government) {
+      result = [
+        ...result, 
+        ...mokGovernmentLocations.map((location) => {
+          return {
+            name: location.name,
+            coordinates: location.coordinats,
+          }
+        }),
+      ];
+    }
+    
+      console.log("inside use effect, result ", result );
+      setMapMarkers(result)
+  }, [filterState])
 
   return (
     <>
         <MapFilter 
-          sendInfoToMap= {getQuaryFromFilter}
-          />
-        <Map geoData= {geoData}/>
+          filterState={filterState} 
+          onFiltersChanged={setFilterState}
+        />
+        <Map mapMarkers={mapMarkers}/>
     </>
   )
   }
