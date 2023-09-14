@@ -1,30 +1,6 @@
-export type mokBusinessDirectoryTypes = {
-    id:number;
-    nameOfBusiness:string;
-    nameOfOwner:string;
-    typeOfBusiness:string;
-    typeOfProduct:string;
-    phoneNumber:string;
-    openingHours:string;
-    open: boolean;
-    adress: {
-        street:string;
-        number:string;
-        postalCode:string;
-        City:string;
-        Municipality:string;
-    },
-    coordinats: [number, number]
-    description:string;
-    review:{
-        stars:number;
-        author:string;
-        description:string;
-    },
-    speakingEnglish: boolean;
-    img:string;
-}[]
-
+import { mokBusinessDirectoryTypes } from "@/types/businessDirectory.types";
+import { mokSightSeeingDirectoryTypes } from "@/types/sightSeeingDirectory";
+import { mokGovernementLocationsTypes } from "@/types/governmentLocationsTypes";
 
 export const mokBusinessDirectory:mokBusinessDirectoryTypes = [
     {
@@ -40,8 +16,8 @@ export const mokBusinessDirectory:mokBusinessDirectoryTypes = [
         street:"Rua doce",
         number:"4",
         postalCode:"1234-54",
-        City:"Coimbra",
-        Municipality:"Coimbra",
+        city:"Coimbra",
+        municipality:"Coimbra",
     },
     coordinats: [-8.40829,40.20122],
     description:"Hairsalon with great koffie",
@@ -66,8 +42,8 @@ export const mokBusinessDirectory:mokBusinessDirectoryTypes = [
         street:"Rua do madeira",
         number:"543",
         postalCode:"1245-09",
-        City:"Graca",
-        Municipality:"Pedrogao Grande",
+        city:"Graca",
+        municipality:"Pedrogao Grande",
     },
     coordinats:[-8.21689,39.89391],
     description:"Lumber yard selling local wood species.",
@@ -92,8 +68,8 @@ export const mokBusinessDirectory:mokBusinessDirectoryTypes = [
         street:"Rua do pastel de nata",
         number:"45",
         postalCode:"3456-09",
-        City:"Serta",
-        Municipality:"Serta",
+        city:"Serta",
+        municipality:"Serta",
     },
     coordinats:[-8.09879,39.80197],
     description:"A shop that sells vintage clothing.",
@@ -118,8 +94,8 @@ export const mokBusinessDirectory:mokBusinessDirectoryTypes = [
         street:"Rua do dua",
         number:"342",
         postalCode:"2783-46",
-        City:"Figueiro dos Vinhos",
-        Municipality:"Figueiro dos Vinhos",
+        city:"Figueiro dos Vinhos",
+        municipality:"Figueiro dos Vinhos",
     },
     coordinats: [-8.27514,39.90315],
     description:"You can buy your construction materials here. Possibility to deliver at home",
@@ -144,8 +120,8 @@ export const mokBusinessDirectory:mokBusinessDirectoryTypes = [
         street:"rua do estremadouro",
         number:"78",
         postalCode:"1234-12",
-        City:"Penela",
-        Municipality:"Penela",
+        city:"Penela",
+        municipality:"Penela",
     },
     coordinats: [-8.38996,40.03160],
     description:"Clothing repair shop",
@@ -161,9 +137,9 @@ export const mokBusinessDirectory:mokBusinessDirectoryTypes = [
 ]
 
 
-export const mokSightSeeingDirectory = [
+export const mokSightSeeingDirectory: mokSightSeeingDirectoryTypes = [
     {
-        id:1,
+        id:6,
         name:"mountain fall trail",
         typeOfAttraction:"waterfall",
         activity:"hiking",
@@ -172,46 +148,47 @@ export const mokSightSeeingDirectory = [
         coordinats: [-8.40829,40.20122]
     },
     {
-        id:2,
-        name:"",
+        id:7,
+        name:"waterfall",
         typeOfAttraction:"",
         activity:"",
         difficulty:"",
         imgs:[],
-    coordinats: [-8.40856,40.20134],
+        coordinats: [-8.118292,39.802527],
     },
     {
-        id:3,
-        name:"",
-        typeOfAttraction:"",
-        activity:"",
-        difficulty:"",
-        images:[],
-        coordinats: [-8.40756,40.20534],
-    },
-    {
-        id:4,
-        name:"",
+        id:8,
+        name:"treck",
         typeOfAttraction:"",
         activity:"",
         difficulty:"",
         imgs:[],
-        coordinats: [-8.40256,40.20434],
+        coordinats: [-8.210465,39.872969],
+    },
+    {
+        id:9,
+        name:"Boating",
+        typeOfAttraction:"",
+        activity:"",
+        difficulty:"",
+        imgs:[],
+        coordinats: [-8.321145,40.087226],
     },
 ]
-export const mokGovernmentLocations = [
+export const mokGovernmentLocations: mokGovernementLocationsTypes = [
     {
+        id: 10,
         name:"Junta de freguesia",
         typeOfOffice:"townhall",
-        Activity:["registration", "permits"],
+        activity:["registration", "permits"],
         adress: {
             street:"rua do estremadouro",
-            number:"78",
+            number: 78,
             postalCode:"1234-12",
-            City:"Penela",
-            Municipality:"Penela",
+            city:"Penela",
+            municipality:"Penela",
             },
-        coordinats: [-8.40726,40.20524],
+        coordinats: [-8.385684,40.027410],
         speakingEnglish: true,
         img:"../img/town-hall.jpg"
 

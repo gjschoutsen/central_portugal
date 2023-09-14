@@ -7,9 +7,9 @@ import Map from "../components/Map"
 import {
   mokBusinessDirectory, 
   mokGovernmentLocations, 
-  mokSightSeeingDirectory, 
-  mokBusinessDirectoryTypes
+  mokSightSeeingDirectory
   } from "../public/assets/mokAPI/mokApi"
+import { mokBusinessDirectoryTypes } from "@/types/businessDirectory.types";
 import { useEffect, useState } from "react";
 
 export const MapAndFilter = () => {
@@ -29,6 +29,7 @@ export const MapAndFilter = () => {
         ...result, 
         ...mokBusinessDirectory.map((business) => {
           return {
+            id: business.id,
             name: business.nameOfBusiness,
             coordinates:business.coordinats,
           }
@@ -41,6 +42,7 @@ export const MapAndFilter = () => {
         ...result,
         ...mokSightSeeingDirectory.map((sight) => {
           return {
+            id: sight.id,
             name: sight.name,
             coordinates: sight.coordinats,
           }
@@ -53,6 +55,7 @@ export const MapAndFilter = () => {
         ...result, 
         ...mokGovernmentLocations.map((location) => {
           return {
+            id: location.id,
             name: location.name,
             coordinates: location.coordinats,
           }
