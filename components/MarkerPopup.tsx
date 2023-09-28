@@ -1,26 +1,26 @@
-import { Black_And_White_Picture } from 'next/font/google';
-import { useState } from 'react'
+import { Offset } from 'mapbox-gl';
 import { Popup } from 'react-map-gl';
 
 type MarkerPopupTypes = {
     long: number;
     lat: number;
-    closePopup: (setToFalse: boolean)=>{}
+    name: string;
+    onClose: VoidFunction
   }
 
-export const MarkerPopup = ({ long, lat, closePopup}: MarkerPopupTypes) => {
+export const MarkerPopup = ({ long, lat, onClose, name, }: MarkerPopupTypes) => {
 
     return (
             <Popup 
                 longitude= {long} 
                 latitude= {lat}
                 anchor= "bottom"
-                onClose= {() => {closePopup(false)} }
+                onClose= {onClose}
                 closeButton= {true}
                 closeOnClick= {false}
-                offset= {[0, -35]}
+                offset= {[0, -35] as Offset}
             >
-                 You are here!
+                 {name}
             </Popup>
     )
     

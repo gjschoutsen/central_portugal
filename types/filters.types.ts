@@ -1,5 +1,6 @@
 export interface IFilterState {
-    business: boolean;
+    shopsAndServices: boolean;
     sights: boolean;
-    government: boolean;
+    publicServices: boolean;
+    utilities: boolean;
 }

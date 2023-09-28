@@ -21,14 +21,17 @@ export const MapFilter = (props: MapFilterProps) => {
   return (
     <form>
       <label>
-      <input type="checkbox" value="business" checked={filterState.business} onChange={() => {toggleFilter('business')}}/>
-        Business</label>
+      <input type="checkbox" value="Shops and Services" checked={filterState.shopsAndServices} onChange={() => {toggleFilter('shopsAndServices')}}/>
+        Shops and Services</label>
       <label>
-      <input type="checkbox" value="sights" checked={filterState.sights} onChange={() =>{toggleFilter('sights')}}/>
+      <input type="checkbox" value="Sights" checked={filterState.sights} onChange={() =>{toggleFilter('sights')}}/>
         Sight Seeing</label>
       <label>
-      <input type="checkbox" value="government" checked={filterState.government} onChange={()=>{toggleFilter("government")}}/>
-        Government</label>
+      <input type="checkbox" value="Public Services" checked={filterState.publicServices} onChange={()=>{toggleFilter("publicServices")}}/>
+        Public services</label>
+      <label>  
+      <input type="checkbox" value="Utilities" checked={filterState.utilities} onChange={()=>{toggleFilter("utilities")}}/>
+        Utilities</label>
     </form>
   )
 }

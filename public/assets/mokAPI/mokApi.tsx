@@ -50,7 +50,7 @@ export const mokBusinessDirectory:mokBusinessDirectoryTypes = [
     review:{
         stars:5,
         author:"Peter",
-        description:"Very expensive, but Bob is a nice man. I wish they had a better variety of wood. I absolutely love wood working and now i can't make my famous cherrywood toilet seat. ",
+        description:"Very expensive, but Joao is a nice man. I wish they had a better variety of wood. I absolutely love woodworking and now i can't make my famous cherrywood toilet seat. ",
     },
     speakingEnglish: true,
     img:"../img/lumber.jpg"
