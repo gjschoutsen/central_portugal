@@ -3,7 +3,7 @@
 import { MapFilter } from "@/components/MapFilter";
 import { IFilterState } from "@/types/filters.types";
 import { IMapMarker } from "@/types/map.types";
-import { shopOrService, sight, utility, publicService } from "@/types/supabase.types";
+import { ShopAndServices, Utilities, PublicServices, Sights} from "@/types/collection.types"
 import Map from "../components/Map"
 import { useEffect, useState } from "react";
 import { supabase } from "@/db/supabase-client";
@@ -18,10 +18,10 @@ export const MapAndFilter = () => {
   const [mapMarkers, setMapMarkers] = useState<IMapMarker[]>([])
   const [popupId, setPopupId] = useState(0)
   const [fetchError, setFetchError] = useState<string | null>(null)
-  const [shopsAndServices, setShopsAndServices ] = useState <null | shopOrService> (null)
-  const [sights, setSights ] = useState <null | sight> (null)
-  const [utilities, setUtilities ] = useState<null | utility>(null)
-  const [publicServices, setPublicServices ] = useState<null | publicService>(null)
+  const [shopsAndServices, setShopsAndServices ] = useState<ShopAndServices[] | null>(null)
+  const [sights, setSights ] = useState<Sights[] | null>(null)
+  const [utilities, setUtilities ] = useState<Utilities[] | null>(null)
+  const [publicServices, setPublicServices ] = useState<PublicServices[] | null>(null)
 
   //Fetch data from supabase
   useEffect(()=>{
