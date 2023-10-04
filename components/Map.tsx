@@ -3,10 +3,9 @@ import React, { Dispatch, SetStateAction, useState } from 'react'
 import MapGl, { Marker } from 'react-map-gl';
 import { IMapMarker } from '@/types/map.types'
 import 'mapbox-gl/dist/mapbox-gl.css';
-import Image from 'next/image'
+import { CldImage } from 'next-cloudinary';
 
 import {MarkerPopup} from '@/components/MarkerPopup'
-import img from "@/public/assets/img/mountain.jpg"
 
 const mapToken = process.env.NEXT_PUBLIC_MAPBOX_API_TOKEN as string
 
@@ -16,9 +15,7 @@ interface MapProps {
   setActivePopupId: Dispatch<SetStateAction<number>>;
 }
 
-export default function Map({ mapMarkers, activePopupId, setActivePopupId }: MapProps) {
-  
-
+export default function Map({ mapMarkers, activePopupId, setActivePopupId }: MapProps){
   return (
     <>
       <section className={"h-[600px]"}>
@@ -32,37 +29,35 @@ export default function Map({ mapMarkers, activePopupId, setActivePopupId }: Map
           style={{width: 600, height: 400}}
           mapStyle="mapbox://styles/mapbox/streets-v11"
         >
-          { mapMarkers.map((marker) => {
+          { mapMarkers.map((array)=>{
+            return array.map((marker) => {
               return (
                 <div key={marker.id}>
-
+  
                   <Marker 
-                    longitude={marker.coordinates[0]}
-                    latitude={marker.coordinates[1]}
+                    longitude={marker.long}
+                    latitude={marker.lat}
                     onClick={ () => setActivePopupId(marker.id) }  
                     >
-                      <Image 
-                        src={img}
-                        width={30}
-                        height={30}
-                        alt="clothing store"
-                        />
-                        <p>
-                          Mountain
-                        </p>
-                    </Marker>
-                    {activePopupId === marker.id && (
+                  </Marker>
+
+                  {activePopupId === marker.id
+                    && (
                       <MarkerPopup 
-                      long= {marker.coordinates[0]}
-                      lat= {marker.coordinates[1]}
+                      long= {marker.long}
+                      lat= {marker.lat}
                       name= {marker.name}
                       onClose= {()=>setActivePopupId(0)}
+                      marker= {marker}
                       />
                       )}
                       </div>
               )}
             )
           }
+          )}
+            
+            
         </MapGl>
       
       </section>

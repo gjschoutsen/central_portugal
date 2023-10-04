@@ -3,4 +3,5 @@ export interface IFilterState {
     sights: boolean;
     publicServices: boolean;
     utilities: boolean;
+    restaurants: boolean;
 }

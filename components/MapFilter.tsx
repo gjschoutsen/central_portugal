@@ -32,6 +32,9 @@ export const MapFilter = (props: MapFilterProps) => {
       <label>  
       <input type="checkbox" value="Utilities" checked={filterState.utilities} onChange={()=>{toggleFilter("utilities")}}/>
         Utilities</label>
+      <label>  
+      <input type="checkbox" value="Restaurants" checked={filterState.restaurants} onChange={()=>{toggleFilter("restaurants")}}/>
+        Restaurants</label>
     </form>
   )
 }
